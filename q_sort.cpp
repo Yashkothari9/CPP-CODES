@@ -1,0 +1,95 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+long long int count1=0;
+void swap(long long int* a, long long int* b)
+{
+   long long int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+long long int middleOfThree(long long int *arr, long long int low,long long int mid, long long int high)
+{
+    long long int a = arr[low];
+   long long int b = arr[mid];
+    long long int c = arr[high];
+    if ((a <= b && b <= c) || (c <= b && b <= a))
+       {
+           swap(&arr[low], &arr[mid]);
+           return low;
+       }
+    else if ((b <= a && a <= c) || (c <= a && a <= b))
+       {
+           return low;
+       }
+    else
+    {
+        swap(&arr[high], &arr[low]);
+        return low;
+    }
+}
+
+long long int partition (long long int arr[], long long int low,long long int high)
+{
+    ll l = high - low + 1;
+    ll pivot_index = middleOfThree(arr, low, (low +high)/2 , high);
+    //cout << "Low : " << arr[low] << ", Mid : " << arr[low + (high - low) / 2] << ", High : " << arr[high] << "\nPivot : " << arr[pivot_index] << endl;
+    /*ll temp = arr[high];
+    arr[high] = arr[pivot_index];
+    arr[pivot_index] = temp;*/
+   long long int pivot = arr[low];
+    long long int i = (low +1);
+    for (int j = low+1 ; j <= high; j++)
+    {
+        if (arr[j] < pivot)
+        {
+
+            swap(&arr[i], &arr[j]);
+            i++;
+        }
+    }
+    swap(&arr[i -1], &arr[low]);
+    return (i-1);
+}
+void Quick_sort(long long int *a,long long int low,long long int high)
+{
+
+        if (low < high){
+                long long int index;
+                index=partition(a,low,high);
+                count1+=(high-low);
+                Quick_sort(a,low,index - 1);
+                Quick_sort(a,index + 1,high);
+
+        }
+        else return;
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        //count =0;
+        cin>>n;
+        long long int a[n];
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        Quick_sort(a,0,n-1);
+        //count1--;
+        cout<<count1<<"\n";
+        count1=0;
+        /*for(int i=0;i<n;i++)
+        {
+            cout<<a[i]<<" ";
+        }
+        cout<<"\n";*/
+
+    }
+    return 0;
+}
