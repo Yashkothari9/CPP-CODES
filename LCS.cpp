@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-int lcs(string s1,string s2)
+void lcs(string s1,string s2)
 {
     int si1=s1.size();
     int si2=s2.size();
