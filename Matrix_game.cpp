@@ -38,32 +38,18 @@ int main()
             }
         }
         int cntcol=0,cntrow=0;
+        
         for(int i=0;i<n;i++)
-        {
-           // cout<<row[i]<<" ";
-            if(row[i]==0)
-            {
-                cntrow++;
-            }
-        }//cout<<"\n";
+            if(row[i]==0)   cntrow++;
+        
         for(int j=0;j<m;j++)
-        {
-           // cout<<cols[j]<<" ";
-            if(cols[j]==0)
-            {
-                cntcol++;
-            }
-        }//cout<<"\n";
-       // cout<<"rows"<<cntrow<<"colums"<<cntcol<<"\n";
+            if(cols[j]==0)  cntcol++;
+ 
         int mini=min(cntrow,cntcol);
-        if(mini%2!=0)
-        {
-            cout<<"Ashish"<<"\n";
-        }
-        else
-        {
-            cout<<"Vivek"<<"\n";
-        }
+        
+        if(mini%2!=0)   cout<<"Ashish"<<"\n";
+        else    cout<<"Vivek"<<"\n";
+        
     }
     return 0;
 }
