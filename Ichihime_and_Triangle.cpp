@@ -9,9 +9,7 @@ int main()
         long long int a,b,c,d;
         cin>>a>>b>>c>>d;
         long long int x,y,z;
-        x=b;
-        y=c;
-        z=d;
+        x=b, y=c, z=d;
         int flag=0;
         int i=1;
         while(true)
